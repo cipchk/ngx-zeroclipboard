@@ -1,0 +1,44 @@
+<h2 class="mt-5 mb-3">Usage</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <textarea highlight-js>
+&lt;button type="button" class="btn btn-primary" *ngIf="switherState" 
+    zeroclipboard [zcData]="data" 
+    (ready)="logs.push('Flash movie loaded and ready.')"
+    (copy)="logs.push('Copied text to clipboard: ' + data)"
+    (destroy)="logs.push('Flash movie is destroy.')"
+    (error)="logs.push('Flash movie load error.')"
+    #copy="zcDirective">Copy</button>
+        </textarea>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="copy">Text to Copy: <button (click)="switherState=!switherState" class="btn btn-link btn-sm">{{switherState?'Hide' : 'Show'}}</button></label>
+            <textarea class="form-control" id="copy" [(ngModel)]="data" rows="3"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" *ngIf="switherState" 
+            zeroclipboard [zcData]="data" 
+            (ready)="logs.push('Flash movie loaded and ready.')"
+            (copy)="logs.push('Copied text to clipboard: ' + data)"
+            (destroy)="logs.push('Flash movie is destroy.')"
+            (error)="logs.push('Flash movie load error.')"
+            #copy="zcDirective">Copy</button>
+        
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="parst">Text to Copy:</label>
+            <textarea class="form-control" id="parst" [(ngModel)]="result" rows="3"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="clear()">Clear Test Area</button>
+        <button type="button" class="btn btn-primary" (click)="reConfig()">ReConfig Title</button>
+    </div>
+</div>
+<div class="row mt-5 mb-5">
+    <div class="col-sm-12">
+        <p><strong>Debug Console</strong></p>
+        <ul>
+            <li *ngFor="let i of logs">{{i}}</li>
+        </ul>
+    </div>
+</div>
